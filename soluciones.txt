@@ -1,0 +1,79 @@
+﻿#######################################################################################################################################
+# Teoría
+
+1. 
+#b) Especifica el mensaje del commit directamente desde la línea de comandos. 
+
+
+2. 
+#a) Como excepciones o casos avanzados que van más allá de las primeras tres formas normales.
+
+3. 
+# Primera Forma Normal
+
+4. Las dos cláusulas se usan para filtrar, pero WHERE se usa para filtrar antes de una agregación. 
+Y HAVING después de cualquier agregación.
+Es decir, ayuda a filtrar las filas agrupadas del conjunto de resultados.
+#
+
+5. c) FROM -> WHERE -> SELECT -> ORDER BY
+#######################################################################################################################################
+# 
+Práctica
+
+1.
+
+```SQL
+-- poner solución debajo de este mensaje
+
+SELECT AVG(edad) AS promedio_edad  
+FROM alumnos  
+WHERE apellido LIKE '%ez';
+
+
+
+
+```
+
+2.
+
+```SQL
+-- poner solución debajo de este mensaje
+
+
+SELECT calificaciones.nombre_materia, COUNT(DISTINCT alumnos.expediente) AS cantidad_alumnos_mayores_a_20
+FROM calificaciones
+JOIN alumnos 
+   ON calificaciones.expediente = alumnos.expediente
+WHERE alumnos.edad > 20
+GROUP BY calificaciones.nombre_materia
+ORDER BY cantidad_alumnos_mayores_a_20 DESC;
+
+
+
+
+
+
+
+```
+
+3.
+
+```SQL
+-- poner solución debajo de este mensaje
+
+
+SELECT nombre, apellido, calificacion
+FROM alumnos
+JOIN calificaciones 
+   ON alumnos.expediente = calificaciones.expediente
+WHERE nombre_materia = 'Matemáticas'
+ORDER BY calificacion DESC
+LIMIT 1 OFFSET 1;
+
+
+
+
+
+
+```
